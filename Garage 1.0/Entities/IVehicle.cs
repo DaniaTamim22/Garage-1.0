@@ -8,5 +8,9 @@ namespace Garage_1._0.Entities
 {
     internal interface IVehicle
     {
+        public bool ParkVehicle(Vehicle vehicle);
+       
+
+
     }
 }

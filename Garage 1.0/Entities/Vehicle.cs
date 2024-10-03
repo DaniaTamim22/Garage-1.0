@@ -22,5 +22,10 @@ namespace Garage_1._0.Entities
             Color = color;
             NumOfWheel = numOfWheel;
         }
+
+        public bool ParkVehicle(Vehicle vehicle)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

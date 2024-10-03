@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Garage_1._0.UI
 {
-    internal class IUI
+    public interface IUI
     {
+        void PrintWelcomeMessage();
+        void PrintSearchMenu();
+
     }
 }
