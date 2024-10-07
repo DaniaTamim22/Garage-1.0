@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,25 +56,6 @@ namespace Garage_1._0.Garage
             return false; // not found in garage 
 
         }
-
-        //public bool RemoveVehicle(T vehicle)
-        //{
-        //    for (int i = 0; i < Vehicles.length; i++)
-        //    {
-        //        if (vehicles[i] == vehicle)
-        //        {
-        //            vehicles[i] = null;
-        //            return true;
-        //             msg succ
-        //        }
-        //    }
-        //    return false; // not found in garage
-        //}
-
-
-
-
-
         public IEnumerator<T> GetEnumerator() => GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -81,6 +63,49 @@ namespace Garage_1._0.Garage
             foreach (var vehicle in vehicles)
             {
                 yield return vehicle;
+            }
+        }
+
+        public Vehicle FindVehicleByRegNum(string regNum)
+        {
+            if (!string.IsNullOrEmpty(regNum))
+            {
+                throw new ArgumentNullException(nameof(regNum));
+            }
+
+            for (int i = 0; i < Vehicles.Length; i++)
+            {
+                if (Vehicles[i].RegNum == regNum.ToUpper())
+                    return Vehicles[i];
+            }
+            return null;
+        }
+
+        public IEnumerable<T> FindVehicleByColor(string color)
+        {
+            foreach (var vehicle in vehicles)
+            {
+                if (vehicle != null && vehicle.Color == color)
+                { yield return vehicle; }
+            }
+
+        }
+
+        public IEnumerable<T> FindVehicleByNumOfWheels(int numOfWheels)
+        {
+            foreach (var vehicle in vehicles)
+            {
+                if (vehicle != null && vehicle.NumOfWheel == numOfWheels)
+                { yield return vehicle; }
+            }
+        }
+
+        public IEnumerable<Vehicle> getAllVehicles()
+        {
+            foreach (var vehicle in vehicles)
+            {
+                if (vehicle != null)
+                    yield return vehicle;
             }
         }
     }

@@ -30,7 +30,25 @@ namespace Garage_1._0.Garage
             return Garage.RemoveVehicle(vehicle);
         }
 
+        public Vehicle SearchVehicleByRegNum(string regNum)
+        {
+            return Garage.FindVehicleByRegNum(regNum);
+        }
 
+        public IEnumerable<Vehicle> SearchVehicleByColor(string color)
+        {
+            return Garage.FindVehicleByColor(color);
+        }
+
+        public IEnumerable<Vehicle> SearchVehicleByNumOfWheels(int numOfWheels)
+        {
+            return Garage.FindVehicleByNumOfWheels(numOfWheels);
+        }
+
+        public IEnumerable<Vehicle> GetAllVehicles()
+        {
+            return Garage.getAllVehicles();
+        }
         public void InitializeGarage()
         {
             //create vehicles 

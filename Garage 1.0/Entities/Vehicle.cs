@@ -13,7 +13,7 @@ namespace Garage_1._0.Entities
         private string color;
         private int numOfWheel;
         public string RegNum { get => regNum; set => regNum = value.ToUpper(); }
-        public string Color { get => color; set => color = value; }
+        public string Color { get => color; set => color = value.ToUpper(); }
         public int NumOfWheel { get => numOfWheel; set => numOfWheel = value; }
 
         public Vehicle(string regNum, string color, int numOfWheel)
