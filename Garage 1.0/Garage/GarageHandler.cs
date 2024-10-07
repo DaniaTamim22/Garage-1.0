@@ -12,51 +12,24 @@ namespace Garage_1._0.Garage
 {
     public class GarageHandler : Garage<Vehicle>, IHandler
     {
-        private string garageName;
-        private Garage<Vehicle> garageVehicleArray;
+        private Garage<Vehicle> garage;
+        public Garage<Vehicle> Garage { get => garage; set => garage = value; }
 
-        public string GarageName { get => garageName; set => garageName = value; }
-        public Garage<Vehicle> GarageVehicleArray { get => garageVehicleArray; set => garageVehicleArray = value; }
-
-        public GarageHandler(string name, int capacity, Garage<Vehicle> vehicles) : base(capacity)
+        public GarageHandler(string name, int capacity) : base(name, capacity)
         {
-            GarageName = name;
-            GarageVehicleArray = vehicles;
-        }
-        public GarageHandler(int capacity) : base(capacity)
-        {
-
-        }
-
-        public Vehicle FindVehicle(Vehicle vehicle)
-        {
-            Vehicle foundVehicle = null;
-            if (vehicle == null || GarageVehicleArray == null)
-            {
-            }
-            else
-            {
-                foundVehicle = garageVehicleArray.FirstOrDefault(vehicle);
-            }
-
-            return foundVehicle;
-
+            Garage = new Garage<Vehicle>(name, capacity);
         }
 
         public bool ParkVehicle(Vehicle vehicle)
         {
-            bool status = false;
-            if (vehicle == null || GarageVehicleArray.Contains(vehicle))
-            {
-                status = false;
-            }
-            else
-            {
-                garageVehicleArray.Append(vehicle);
-                status = true;
-            }
-            return status;
+            return Garage.AddVehicle(vehicle);
         }
+
+        public bool LeaveGarage(Vehicle vehicle)
+        {
+            return Garage.RemoveVehicle(vehicle);
+        }
+
 
         public void InitializeGarage()
         {

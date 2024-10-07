@@ -10,54 +10,66 @@ namespace Garage_1._0.Garage
 {
     public class Garage<T> : IEnumerable<T> where T : Vehicle
     {
-        private readonly int capacity;
-        private int vehicleCountInGarage = 0;
-        private Vehicle[] vehicles;
-        public Garage(int capacity)
+        private string garageName;
+        private int capacity;
+        private T[] vehicles;
+        public Garage(string name, int capacity)
         {
             if (capacity < 0) throw new ArgumentOutOfRangeException(nameof(capacity));
             this.capacity = capacity;
-            vehicles = new Vehicle[capacity];
+            GarageName = name;
+            Vehicles = new T[capacity];
         }
 
-        public bool Park(Vehicle vehicle)
+        public T[] Vehicles { get => vehicles; set => vehicles = value; }
+        public string GarageName { get => garageName; set => garageName = value; }
+
+        public bool AddVehicle(T vehicle)
         {
             if (vehicle == null) throw new ArgumentNullException(nameof(vehicle));
 
-            if (vehicleCountInGarage >= capacity)
+            for (int i = 0; i < Vehicles.Length; i++)
             {
-                return false;
-                //add msg to user to tell no plaace found
+                if (Vehicles[i] == null)
+                {
+                    Vehicles[i] = vehicle;
+                    return true;
+                    // msg succ
+                }
             }
-            else
-            {
-                return true;
-                // msg succ
-                vehicles = vehicles.Append(vehicle).ToArray();
-                vehicleCountInGarage++;
-
-            }
+            return false; // no place in garage (full)
         }
 
+        public bool RemoveVehicle(T vehicle)
+        {
+            if (vehicle == null) throw new ArgumentNullException(nameof(vehicle));
+            for (int i = 0; i < Vehicles.Length; i++)
+            {
+                if (Vehicles[i] == vehicle)
+                {
+                    Vehicles[i] = null;
+                    return true;
+                    // msg succ
+                }
+            }
+            return false; // not found in garage 
 
-        //public bool Leave(Vehicle vehicle)
+        }
+
+        //public bool RemoveVehicle(T vehicle)
         //{
-        //    if (!vehicles.Any()) yield return false;
-
-        //    if (!vehicles.Contains(vehicle)) yield return false;
-        //    else
+        //    for (int i = 0; i < Vehicles.length; i++)
         //    {
-        //        foreach (var v in vehicles)
+        //        if (vehicles[i] == vehicle)
         //        {
-        //            if (v == vehicle)
-        //            {
-        //                vehicleCountInGarage--;
-        //                //remove from vehicles
-        //                yield return true;
-        //            }
+        //            vehicles[i] = null;
+        //            return true;
+        //             msg succ
         //        }
         //    }
+        //    return false; // not found in garage
         //}
+
 
 
 
@@ -73,3 +85,4 @@ namespace Garage_1._0.Garage
         }
     }
 }
+
