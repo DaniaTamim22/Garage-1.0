@@ -28,8 +28,8 @@ namespace Garage_1._0.UI
                     $"Please enter your choice to proceed ..\n" +
                     $"{CreateNewGarage} Create a new garage. \n" +
                     $"{AddNewVehicle} Add a new vehicle .\n" +
-                    $"{ListAllVehicle} Show all vehicle in the garage and each type  .\n" +
-                    $"{ListVehicleTypes} Show all vehicle types in the garage .\n" +
+                    $"{ListAllVehicle} Show all vehicles in the garage and each type  .\n" +
+                    $"{ListVehicleTypes} Show all vehicles types in the garage .\n" +
                     $"{ParkVehicle} Park a vehicle in tha garage .\n" +
                     $"{RemoveVehicle} Remove a vehicle from tha garage .\n" +
                     $"{FindVehicle} Search vehicle in tha garage .\n" +
@@ -46,5 +46,6 @@ namespace Garage_1._0.UI
                     $"{SearchByType} Search a vehicle by it's type  .\n" +
                     $"{GoBackToMainMenu} Go back to main menu.. .\n");
         }
+
     }
 }

@@ -12,7 +12,7 @@ namespace Garage_1._0.Entities
         private string regNum;
         private string color;
         private int numOfWheel;
-        public string RegNum { get => regNum; set => regNum = value; }
+        public string RegNum { get => regNum; set => regNum = value.ToUpper(); }
         public string Color { get => color; set => color = value; }
         public int NumOfWheel { get => numOfWheel; set => numOfWheel = value; }
 
@@ -26,6 +26,11 @@ namespace Garage_1._0.Entities
         public bool ParkVehicle(Vehicle vehicle)
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return $"Vehicle RegNum is{RegNum} has a{color} color and {numOfWheel} wheels.";
         }
     }
 }
