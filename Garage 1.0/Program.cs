@@ -9,18 +9,106 @@ namespace Garage_1._0
     {
         static void Main(string[] args)
         {
-            GarageHandler garageHandler = new GarageHandler (10);
-           garageHandler.InitializeGarage();
+            bool isalive = true;
+            GarageHandler garageHandler;
 
             UserInterface userInterface = new UserInterface();
-            userInterface.PrintWelcomeMessage();
+            do
+            {   userInterface.PrintWelcomeMessage();
+                uint input = Util.AskForUInt("Enter your choice : ");
 
+                switch (input)
+                {
+                    case UserInterface.Quit:
+                        {
+                            isalive = false; break;
+                        }
 
-            // Vehicle car= new Vehicle("REG","Red",4);
-            // Vehicle car2= new Vehicle("REG","Red",4);
+                    case UserInterface.CreateNewGarage:
+                        {
+                            garageHandler = new GarageHandler("First Garage", 10);
+                            garageHandler.SeedData(garageHandler);
+                            break;
+                        }
+                    case UserInterface.AddNewVehicle:
+                        {
+                            userInterface.PrintAddVehicleMenu();
+                            break;
+                        }
+                    case UserInterface.ListAllVehicle:
+                        {
+                            userInterface.ListAllVehicleMenu();
+                            break;
+                        }
+                    case UserInterface.ListVehicleTypes:
+                        {
+                            userInterface.ListVehicleTypesMenu();
+                            break;
+                        }
+                    case UserInterface.ParkVehicle:
+                        {
+                            userInterface.ParkVehicleMenu();
+                            break;
+                        }
+                    case UserInterface.RemoveVehicle:
+                        {
+                            userInterface.RemoveVehicleMenu();
+                            break;
+                        }
+                    case UserInterface.FindVehicle:
+                        {
+                            userInterface.FindVehicleMenu();
+                            break;
+                        }
+                    case UserInterface.SearchByRegNum:
+                        {
+                            userInterface.SearchByRegNumMenu();
+                            break;
+                        }
+                    case UserInterface.SearchByProperties:
+                        {
+                            //userInterface.ListAllVehicleMenu();
+                            break;
+                        }
+                    case UserInterface.SearchByNumOfWheels:
+                        {
+                           // userInterface.ListAllVehicleMenu();
+                            break;
+                        }
+                    case UserInterface.SearchByType:
+                        {
+                           // userInterface.ListAllVehicleMenu();
+                            break;
+                        }
+                    case UserInterface.GoBackToMainMenu:
+                        {
+                           // userInterface.ListAllVehicleMenu();
+                            break;
+                        }
+                    case UserInterface.SearchByColor:
+                        {
+                            //userInterface.ListAllVehicleMenu();
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("You Entered Unvalid Number!! Please Enter a number from the menu below :\n");
+                            break;
+                        }
 
-            //Garage<Vehicle> vehicles = [car] ; 
-            //GarageHandler garageHandler =GarageHandler("GarageTest",5, vehicles);
+                }
+                   
+            }
+            while (isalive);
+
+            //var vehicles =garageHandler.GetAllVehicles();
+            //foreach (var v in vehicles)
+            //{
+            //    if (v != null)
+            //    {
+            //        Console.WriteLine(v.ToString());
+            //    }
+            //}
         }
     }
 }

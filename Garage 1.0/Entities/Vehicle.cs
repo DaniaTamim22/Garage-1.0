@@ -30,7 +30,7 @@ namespace Garage_1._0.Entities
 
         public override string ToString()
         {
-            return $"Vehicle RegNum is{RegNum} has a{color} color and {numOfWheel} wheels.";
+            return $"Vehicle with a registration number {RegNum} has a {color} color and {numOfWheel} wheels.\n";
         }
     }
 }

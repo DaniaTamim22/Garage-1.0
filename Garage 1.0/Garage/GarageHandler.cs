@@ -45,15 +45,31 @@ namespace Garage_1._0.Garage
             return Garage.FindVehicleByNumOfWheels(numOfWheels);
         }
 
-        public IEnumerable<Vehicle> GetAllVehicles()
+        public Vehicle[] GetAllVehicles()
         {
-            return Garage.getAllVehicles();
+            return Garage.getAll();
         }
         public void InitializeGarage()
         {
             //create vehicles 
             //create garage
 
+        }
+
+        public void SeedData(GarageHandler garageHandler)
+        {
+            Vehicle car1 = new Vehicle("UGG123", "Red", 4);
+            Vehicle car2 = new Vehicle("OFG298", "Red", 4);
+            Vehicle car3 = new Vehicle("REG456", "Blue", 4);
+            Vehicle car4 = new Vehicle("KLE873", "Blue", 4);
+            Vehicle car5 = new Vehicle("DDL456", "Blue", 4);
+            Vehicle car6 = new Vehicle("NMB343", "Red", 4);
+            garageHandler.ParkVehicle(car1);
+            garageHandler.ParkVehicle(car2);
+            garageHandler.ParkVehicle(car3);
+            garageHandler.ParkVehicle(car4);
+            garageHandler.ParkVehicle(car5);
+            garageHandler.ParkVehicle(car1);
         }
     }
 }

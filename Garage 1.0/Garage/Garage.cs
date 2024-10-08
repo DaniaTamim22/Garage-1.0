@@ -31,6 +31,7 @@ namespace Garage_1._0.Garage
 
             for (int i = 0; i < Vehicles.Length; i++)
             {
+               // if (Vehicles[i].RegNum == vehicle.RegNum) return false;
                 if (Vehicles[i] == null)
                 {
                     Vehicles[i] = vehicle;
@@ -100,13 +101,14 @@ namespace Garage_1._0.Garage
             }
         }
 
-        public IEnumerable<Vehicle> getAllVehicles()
+        public Vehicle[] getAll()
         {
-            foreach (var vehicle in vehicles)
-            {
-                if (vehicle != null)
-                    yield return vehicle;
-            }
+            //for (int i = 0;i < Vehicles.Length;i++)
+            //{
+            //    if (vehicles[i] != null)
+            //         return vehicles[i];
+            //}
+            return vehicles;
         }
     }
 }
